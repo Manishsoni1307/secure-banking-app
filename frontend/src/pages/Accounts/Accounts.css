@@ -1,0 +1,23 @@
+.container-fluid {
+    min-height: 100vh;
+    background: #f4f7fb;
+}
+
+.card {
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+}
+
+.card-title {
+    color: #0F172A;
+    font-weight: 700;
+}
+
+.badge {
+    padding: 8px 15px;
+    font-size: 14px;
+}

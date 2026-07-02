@@ -1,0 +1,116 @@
+.register-page {
+  background: #f4f7fc;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 60px 0;
+}
+
+.register-card {
+  background: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.register-card h2 {
+  text-align: center;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.subtitle {
+  text-align: center;
+  color: #64748b;
+  margin-bottom: 30px;
+}
+
+.form-control {
+  height: 50px;
+  border-radius: 10px;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: #2563eb;
+}
+
+.password-box {
+  position: relative;
+}
+
+.password-box .form-control {
+  padding-right: 45px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+}
+
+.register-btn {
+  height: 52px;
+  font-weight: 600;
+  border-radius: 12px;
+}
+
+.register-icon {
+  width: 70px;
+  height: 70px;
+  background: #2563eb;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  margin: auto;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.login-link {
+  text-decoration: none;
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.login-link:hover {
+  color: #0f172a;
+}
+
+.password-strength {
+  margin-top: 10px;
+}
+
+.strength-bar {
+  height: 6px;
+  border-radius: 20px;
+  background: #cbd5e1;
+  transition: 0.3s;
+  margin-bottom: 4px;
+}
+
+.strength-bar.weak {
+  background: #ef4444;
+}
+
+.strength-bar.medium {
+  background: #f59e0b;
+}
+
+.strength-bar.strong {
+  background: #16a34a;
+}
+
+@media (max-width: 768px) {
+  .register-card {
+    padding: 25px;
+  }
+}
