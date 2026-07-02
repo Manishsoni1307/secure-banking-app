@@ -1,0 +1,640 @@
+/* Page Layout */
+.transfer-page {
+  background: #f5f7fb;
+  padding: 60px 0;
+  min-height: 100vh;
+}
+
+/* Left Column Form Container */
+.transfer-card {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+.transfer-card h2 {
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #0f172a;
+}
+
+.subtitle {
+  color: #6c757d;
+  margin-bottom: 30px;
+}
+
+/* Custom Input and Form Styling */
+.form-control,
+.form-select {
+  height: 50px;
+  border-radius: 12px;
+  padding: 12px;
+  border: 1px solid #ced4da;
+  font-size: 15px;
+}
+
+textarea.form-control {
+  height: auto;
+  resize: none;
+}
+
+.form-label {
+  font-weight: 500;
+  color: #475569;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+/* Global Buttons Setup */
+.btn {
+  height: 50px;
+  font-size: 17px;
+  font-weight: 600;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-sm {
+  height: 34px;
+  font-size: 13px;
+  padding: 0 15px;
+  border-radius: 8px;
+}
+
+/* Live Summary Card Column */
+.summary-card {
+  background: #0d6efd;
+  color: white;
+  padding: 30px;
+  border-radius: 20px;
+  position: sticky;
+  top: 40px;
+  box-shadow: 0 20px 40px rgba(13, 110, 253, 0.25);
+}
+
+.summary-card h4 {
+  margin-bottom: 25px;
+  font-weight: 700;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 18px 0;
+  font-size: 15px;
+  opacity: 0.9;
+}
+
+.summary-item strong {
+  font-weight: 600;
+}
+
+.summary-card hr {
+  border-color: rgba(255, 255, 255, 0.25);
+  margin: 20px 0;
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+/* Beneficiaries Dashboard Selection List */
+.beneficiary-card {
+  margin-top: 25px;
+  background: white;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.beneficiary-card h5 {
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #0f172a;
+}
+
+.beneficiary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 10px;
+  border-bottom: 1px solid #eee;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.beneficiary-item:last-child {
+  border-bottom: none;
+}
+
+.beneficiary-item:hover {
+  background: #f8f9fa;
+  padding-left: 15px;
+}
+
+.beneficiary-item h6 {
+  margin: 0;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.beneficiary-item small {
+  color: #6c757d;
+}
+
+/* Dynamic Interactive Overlays: OTP & Receipt Modal Windows */
+.otp-overlay,
+.receipt-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.otp-card,
+.receipt-card {
+  background: white;
+  width: 100%;
+  max-width: 440px;
+  padding: 35px;
+  border-radius: 18px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  animation: modalPopup 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes modalPopup {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.otp-card h3,
+.receipt-card h2 {
+  font-weight: 700;
+  color: #0f172a;
+  text-align: center;
+}
+
+.otp-card p {
+  color: #64748b;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.otp-card input {
+  margin: 25px 0;
+  font-size: 24px;
+  text-align: center;
+  letter-spacing: 6px;
+  font-weight: bold;
+}
+
+.otp-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.otp-buttons .btn {
+  flex: 1;
+}
+
+/* Success Receipt Layout Spec */
+.success-icon {
+  font-size: 52px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.receipt-card h2 {
+  font-size: 24px;
+  margin-bottom: 25px;
+}
+
+.receipt-card hr {
+  border-color: #f1f5f9;
+  margin: 20px 0;
+}
+
+.receipt-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  font-size: 15px;
+}
+
+.receipt-row span {
+  color: #64748b;
+}
+
+.receipt-row strong {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* Form Helper Utilities */
+.w-100 {
+  width: 100%;
+}
+.mt-4 {
+  margin-top: 1.5rem;
+}
+
+/* Responsive Media Breakdown */
+@media (max-width: 991px) {
+  .summary-card {
+    position: static;
+    margin-bottom: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .transfer-page {
+    padding: 30px 10px;
+  }
+  .transfer-card {
+    padding: 25px;
+  }
+  .otp-card,
+  .receipt-card {
+    margin: 0 15px;
+    padding: 25px;
+  }
+}
+/* ==========================
+   PAGE
+========================== */
+
+.transfer-page {
+  background: #f4f7fc;
+  min-height: 100vh;
+  padding: 60px 0;
+}
+
+/* ==========================
+   LEFT CARD
+========================== */
+
+.transfer-page .col-lg-8 {
+  margin-bottom: 30px;
+}
+
+.transfer-page form {
+  background: #fff;
+  padding: 35px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+.transfer-page h2 {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* ==========================
+   INPUTS
+========================== */
+
+.form-label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.form-control,
+.form-select {
+  border-radius: 12px;
+  border: 1px solid #dcdcdc;
+  padding: 12px 15px;
+  transition: 0.3s;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
+
+textarea.form-control {
+  resize: none;
+}
+
+/* ==========================
+   BUTTON
+========================== */
+
+.btn-primary {
+  background: linear-gradient(90deg, #0d6efd, #2563eb);
+
+  border: none;
+
+  border-radius: 12px;
+
+  padding: 13px;
+
+  font-weight: 600;
+
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 10px 25px rgba(13, 110, 253, 0.3);
+}
+
+/* ==========================
+   SUMMARY
+========================== */
+
+.summary-card {
+  background: linear-gradient(135deg, #0d6efd, #1d4ed8);
+
+  color: white;
+
+  border-radius: 20px;
+
+  padding: 30px;
+
+  box-shadow: 0 15px 40px rgba(13, 110, 253, 0.3);
+
+  margin-bottom: 25px;
+}
+
+.summary-card h4 {
+  font-weight: 700;
+
+  margin-bottom: 20px;
+}
+
+.summary-item {
+  display: flex;
+
+  justify-content: space-between;
+
+  margin: 18px 0;
+}
+
+.summary-item span {
+  opacity: 0.9;
+}
+
+.summary-item strong {
+  font-size: 17px;
+}
+
+/* ==========================
+   BENEFICIARIES
+========================== */
+
+.beneficiary-card {
+  background: white;
+
+  border-radius: 20px;
+
+  padding: 25px;
+
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+.beneficiary-card h5 {
+  margin-bottom: 20px;
+
+  font-weight: 700;
+}
+
+.beneficiary-item {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 15px 0;
+
+  border-bottom: 1px solid #eee;
+
+  transition: 0.3s;
+
+  cursor: pointer;
+}
+
+.beneficiary-item:last-child {
+  border-bottom: none;
+}
+
+.beneficiary-item:hover {
+  padding-left: 10px;
+
+  background: #f8f9fa;
+}
+
+.beneficiary-item h6 {
+  margin: 0;
+
+  font-weight: 600;
+}
+
+.beneficiary-item small {
+  color: #666;
+}
+
+/* ==========================
+   OTP MODAL
+========================== */
+
+.otp-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.55);
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  z-index: 9999;
+}
+
+.otp-card {
+  width: 420px;
+
+  background: white;
+
+  border-radius: 20px;
+
+  padding: 35px;
+
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+
+  animation: popup 0.3s;
+}
+
+.otp-card h3 {
+  font-weight: 700;
+
+  margin-bottom: 15px;
+}
+
+.otp-card input {
+  text-align: center;
+
+  font-size: 22px;
+
+  letter-spacing: 8px;
+
+  margin: 20px 0;
+}
+
+.otp-buttons {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 15px;
+}
+
+/* ==========================
+   RECEIPT
+========================== */
+
+.receipt-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.55);
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  z-index: 9999;
+}
+
+.receipt-card {
+  width: 520px;
+
+  background: white;
+
+  border-radius: 20px;
+
+  padding: 40px;
+
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+
+  animation: popup 0.3s;
+}
+
+.success-icon {
+  text-align: center;
+
+  font-size: 70px;
+
+  margin-bottom: 15px;
+}
+
+.receipt-card h2 {
+  text-align: center;
+
+  font-weight: 700;
+}
+
+.receipt-row {
+  display: flex;
+
+  justify-content: space-between;
+
+  margin: 18px 0;
+
+  padding-bottom: 8px;
+
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.receipt-row:last-child {
+  border: none;
+}
+
+/* ==========================
+   ANIMATION
+========================== */
+
+@keyframes popup {
+  from {
+    transform: scale(0.85);
+
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+
+    opacity: 1;
+  }
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media (max-width: 991px) {
+  .summary-card {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .transfer-page {
+    padding: 30px 10px;
+  }
+
+  .transfer-page form {
+    padding: 20px;
+  }
+
+  .summary-card {
+    padding: 20px;
+  }
+
+  .beneficiary-card {
+    padding: 20px;
+  }
+
+  .otp-card,
+  .receipt-card {
+    width: 95%;
+  }
+}
