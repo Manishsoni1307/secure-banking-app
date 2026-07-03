@@ -27,11 +27,14 @@ const transactionRoutes = require("./routes/transaction.routes");
  */
 
 app.get("/", (req, res) => {
-    res.send("Ledger Service is up and running")
-    });
+  res.send("Ledger Service is up and running")
+});
 
-app.use("/api/auth", authRouter);
-app.use("/api/account", accountRouter);
+app.use("/api/users", authRouter);
+
+app.use("/api/accounts", accountRouter);
+
 app.use("/api/transactions", transactionRoutes);
+
 
 module.exports = app;

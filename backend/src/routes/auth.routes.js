@@ -1,20 +1,22 @@
 const express = require("express");
-const { authMiddleware } = require("../middleware/auth.middleware"); 
-const { 
-  userRegisterController, 
-  userLoginController, 
-  userLogoutController 
+const { authMiddleware } = require("../middleware/auth.middleware");
+const {
+  userRegisterController,
+  userLoginController,
+  userLogoutController,
+  getProfile,
 } = require("../controllers/auth.controller");
 
-const router = express.Router(); 
+const router = express.Router();
 
-/* POST /api/auth/register */
 router.post("/register", userRegisterController);
 
-/* POST /api/auth/login */
 router.post("/login", userLoginController);
 
-/* POST /api/auth/logout */
 router.post("/logout", authMiddleware, userLogoutController);
+
+router.get("/profile", authMiddleware, (req, res) => {
+  res.json({ message: "Profile route is working!" });
+});
 
 module.exports = router;
