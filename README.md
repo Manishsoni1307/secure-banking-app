@@ -4,6 +4,73 @@ Secure Ledger is a complete full-stack banking application that combines a moder
 
 ---
 
+# ⚙ Backend Features
+
+The backend powers the complete banking system through secure REST APIs while ensuring consistency, security, and reliability.
+
+## 🔐 Authentication & Authorization
+
+- User Registration
+- Secure Login
+- JWT Authentication
+- Password Hashing using bcrypt
+- Protected APIs
+- Logout with Token Blacklisting
+- Cookie Parser Integration
+
+---
+
+## 💳 Banking System
+
+- Create Multiple Accounts
+- Deposit Money
+- Check Account Balance
+- Multi-Account Support
+- Account Status Validation
+
+---
+
+## 💸 Transaction Engine
+
+- Secure Money Transfer
+- MongoDB ACID Transactions
+- MongoDB Session Management
+- Automatic Rollback on Failure
+- Pending Transaction Workflow
+- Sender Balance Verification
+
+---
+
+## 📒 Financial Ledger
+
+- Dual Entry Accounting
+- Immutable Ledger Records
+- Credit & Debit Tracking
+- Transaction History
+- Aggregation Pipeline for Balance Calculation
+
+---
+
+## 🛡 Backend Security
+
+- JWT Authorization
+- Password Encryption
+- Authentication Middleware
+- Idempotency Validation
+- Duplicate Transaction Prevention
+- TTL Index for Automatic Token Cleanup
+
+---
+
+## 📧 Email Service
+
+- Registration Emails
+- Transaction Notifications
+- Background Email Processing
+- Nodemailer Integration
+
+---
+
 # 🎨 Frontend Features
 
 The frontend is built using **React**, delivering a modern, responsive, and intuitive banking interface while securely communicating with the Secure Ledger REST API.
@@ -88,72 +155,7 @@ The frontend is built using **React**, delivering a modern, responsive, and intu
 
 ---
 
-# ⚙ Backend Features
 
-The backend powers the complete banking system through secure REST APIs while ensuring consistency, security, and reliability.
-
-## 🔐 Authentication & Authorization
-
-- User Registration
-- Secure Login
-- JWT Authentication
-- Password Hashing using bcrypt
-- Protected APIs
-- Logout with Token Blacklisting
-- Cookie Parser Integration
-
----
-
-## 💳 Banking System
-
-- Create Multiple Accounts
-- Deposit Money
-- Check Account Balance
-- Multi-Account Support
-- Account Status Validation
-
----
-
-## 💸 Transaction Engine
-
-- Secure Money Transfer
-- MongoDB ACID Transactions
-- MongoDB Session Management
-- Automatic Rollback on Failure
-- Pending Transaction Workflow
-- Sender Balance Verification
-
----
-
-## 📒 Financial Ledger
-
-- Dual Entry Accounting
-- Immutable Ledger Records
-- Credit & Debit Tracking
-- Transaction History
-- Aggregation Pipeline for Balance Calculation
-
----
-
-## 🛡 Backend Security
-
-- JWT Authorization
-- Password Encryption
-- Authentication Middleware
-- Idempotency Validation
-- Duplicate Transaction Prevention
-- TTL Index for Automatic Token Cleanup
-
----
-
-## 📧 Email Service
-
-- Registration Emails
-- Transaction Notifications
-- Background Email Processing
-- Nodemailer Integration
-
----
 
 # 🏗 Tech Stack
 
