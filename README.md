@@ -1,3 +1,12 @@
+# 🌐 Live Demo
+
+### 🚀 Frontend
+
+https://secure-banking-app-zd8b.vercel.app/
+
+### ⚙ Backend API
+https://secure-banking-app-2.onrender.com/
+
 # 🖥 Full Stack Features
 
 Secure Ledger is a complete full-stack banking application that combines a modern React frontend with a secure Node.js backend, providing a seamless digital banking experience while following production-level software engineering practices.
@@ -494,5 +503,4 @@ JSON Response
 https://secure-banking-app-zd8b.vercel.app/
 
 ### ⚙ Backend API
-
-https://banking-app-backend-h2gp.onrender.com/
+https://secure-banking-app-2.onrender.com/
