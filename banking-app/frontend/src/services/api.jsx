@@ -1,12 +1,15 @@
 import axios from "axios";
 
+console.log("API URL =", import.meta.env.VITE_API_URL);
+
 const API = axios.create({
-  baseURL: "http://localhost:3000/api",
+  baseURL: import.meta.env.VITE_API_URL,
   headers: {
     "Content-Type": "application/json",
   },
   withCredentials: true,
 });
+
 
 API.interceptors.request.use(
   (config) => {
@@ -34,17 +37,17 @@ API.interceptors.response.use(
 );
 
 export const registerUser = async (userData) => {
-  const response = await API.post("/auth/register", userData);
+  const response = await API.post("/users/register", userData);
   return response.data;
 };
 
 export const loginUser = async (credentials) => {
-  const response = await API.post("/auth/login", credentials);
+  const response = await API.post("/users/login", credentials);
   return response.data;
 };
 
 export const logoutUser = async () => {
-  const response = await API.post("/auth/logout");
+  const response = await API.post("/users/logout");
   return response.data;
 };
 

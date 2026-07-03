@@ -4,6 +4,14 @@ const app = require("./src/app");
 const connectToDB = require("./src/config/db");
 
 connectToDB();
-app.listen(3000, () => {
-  console.log("Server is running on PORT 3000");
+
+const PORT = 5001;
+
+app.listen(PORT, (err) => {
+  if (err) {
+    console.error("Failed to start server:", err);
+    return;
+  }
+
+  console.log(`Server is running on PORT ${PORT}`);
 });

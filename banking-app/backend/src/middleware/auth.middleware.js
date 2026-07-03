@@ -3,20 +3,25 @@ const jwt = require("jsonwebtoken");
 const tokenBlackListModel = require("../models/blackList.model");
 
 async function authMiddleware(req, res, next) {
+  if (req.method === "OPTIONS") {
+    return next();
+  }
+
   try {
     const authHeader = req.headers.authorization;
 
-    if (!authHeader || !authHeader.startsWith("Bearer ")) {
-      return res
-        .status(401)
-        .json({ message: "unauthorized access, token is missing" });
-    }
-    const token = req.cookies.token || req.header.authHeader?.split(" ")[1];
+    const token =
+      req.cookies?.token ||
+      (authHeader && authHeader.startsWith("Bearer ")
+        ? authHeader.split(" ")[1]
+        : null);
+
     if (!token) {
       return res
         .status(401)
         .json({ message: "unauthorized access, token is missing" });
     }
+
     const isBlacklisted = await tokenBlackListModel.findOne({ token: token });
     if (isBlacklisted) {
       return res
@@ -36,16 +41,19 @@ async function authMiddleware(req, res, next) {
 }
 
 async function authSystemUserMiddleware(req, res, next) {
+  if (req.method === "OPTIONS") {
+    return next();
+  }
+
   try {
     const authHeader = req.headers.authorization;
 
-    if (!authHeader || !authHeader.startsWith("Bearer ")) {
-      return res
-        .status(401)
-        .json({ message: "unauthorized access, token is missing" });
-    }
+    const token =
+      req.cookies?.token ||
+      (authHeader && authHeader.startsWith("Bearer ")
+        ? authHeader.split(" ")[1]
+        : null);
 
-    const token = req.cookies.token || req.header.authHeader?.split(" ")[1];
     if (!token) {
       return res
         .status(401)

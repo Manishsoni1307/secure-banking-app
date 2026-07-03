@@ -70,11 +70,11 @@ function Register() {
     try {
       setLoading(true);
 
-      const response = await API.post("/auth/register", {
-        name: formData.name,
-        email: formData.email,
-        password: formData.password,
-      });
+   const response = await API.post("/users/register", {
+  name: formData.name,
+  email: formData.email,
+  password: formData.password,
+});
 
       toast.success("Registration Successful! 🎉");
       localStorage.setItem("token", response.data.token);
@@ -93,7 +93,7 @@ function Register() {
       <div className="register-page">
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-lg-5">
+            <div className="col-lg-6">
               <div className="register-card">
                 <div className="register-icon">👤</div>
                 <h2>Create Account</h2>
@@ -101,115 +101,95 @@ function Register() {
 
                 <form onSubmit={handleSubmit}>
                   <div className="row">
+                    {/* Full Name */}
                     <div className="col-md-6 mb-4">
                       <label className="form-label">Full Name</label>
-
                       <input
                         type="text"
                         className="form-control"
                         name="name"
-                        value={profile.name}
+                        value={formData.name}
                         onChange={handleChange}
                         placeholder="Enter your full name"
                       />
                     </div>
 
+                    {/* Email Address */}
                     <div className="col-md-6 mb-4">
                       <label className="form-label">Email Address</label>
-
                       <input
                         type="email"
                         className="form-control"
                         name="email"
-                        value={profile.email}
-                        disabled
-                      />
-
-                      <small className="text-muted">
-                        Email cannot be changed.
-                      </small>
-                    </div>
-
-                    <div className="col-md-6 mb-4">
-                      <label className="form-label">Mobile Number</label>
-
-                      <input
-                        type="text"
-                        className="form-control"
-                        name="phone"
-                        value={profile.phone}
+                        value={formData.email}
                         onChange={handleChange}
-                        placeholder="+91 XXXXX XXXXX"
+                        placeholder="Enter your email"
                       />
                     </div>
 
+                    {/* Password */}
                     <div className="col-md-6 mb-4">
-                      <label className="form-label">Residential Address</label>
-
-                      <input
-                        type="text"
-                        className="form-control"
-                        name="address"
-                        value={profile.address}
-                        onChange={handleChange}
-                        placeholder="Enter your address"
-                      />
-                    </div>
-                  </div>
-
-                  <hr className="my-4" />
-
-                  <h4 className="mb-4">Account Information</h4>
-
-                  <div className="row">
-                    <div className="col-md-6 mb-4">
-                      <div className="info-box">
-                        <h6>Customer ID</h6>
-
-                        <p>SB20260001</p>
+                      <label className="form-label">Password</label>
+                      <div className="input-group">
+                        <input
+                          type={showPassword ? "text" : "password"}
+                          className="form-control"
+                          name="password"
+                          value={formData.password}
+                          onChange={handleChange}
+                          placeholder="Create a password"
+                        />
+                        <button
+                          type="button"
+                          className="btn btn-outline-secondary"
+                          onClick={() => setShowPassword(!showPassword)}
+                        >
+                          {showPassword ? <FaEyeSlash /> : <FaEye />}
+                        </button>
                       </div>
                     </div>
 
+                    {/* Confirm Password */}
                     <div className="col-md-6 mb-4">
-                      <div className="info-box">
-                        <h6>Account Type</h6>
-
-                        <p>Savings Account</p>
-                      </div>
-                    </div>
-
-                    <div className="col-md-6 mb-4">
-                      <div className="info-box">
-                        <h6>Account Number</h6>
-
-                        <p>XXXX XXXX 4587</p>
-                      </div>
-                    </div>
-
-                    <div className="col-md-6 mb-4">
-                      <div className="info-box">
-                        <h6>KYC Status</h6>
-
-                        <p className="text-success fw-bold">✔ Verified</p>
+                      <label className="form-label">Confirm Password</label>
+                      <div className="input-group">
+                        <input
+                          type={showConfirmPassword ? "text" : "password"}
+                          className="form-control"
+                          name="confirmPassword"
+                          value={formData.confirmPassword}
+                          onChange={handleChange}
+                          placeholder="Confirm your password"
+                        />
+                        <button
+                          type="button"
+                          className="btn btn-outline-secondary"
+                          onClick={() =>
+                            setShowConfirmPassword(!showConfirmPassword)
+                          }
+                        >
+                          {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+                        </button>
                       </div>
                     </div>
                   </div>
 
                   <div className="d-flex justify-content-end mt-4">
                     <button
-                      className="btn btn-primary btn-lg px-5"
-                      disabled={saving}
+                      type="submit"
+                      className="btn btn-primary btn-lg w-100"
+                      disabled={loading}
                     >
-                      {saving ? (
+                      {loading ? (
                         <>
                           <span
                             className="spinner-border spinner-border-sm me-2"
                             role="status"
                           ></span>
-                          Updating...
+                          Registering...
                         </>
                       ) : (
-                        "Update Profile"
+                        "Sign Up"
                       )}
                     </button>
                   </div>
