@@ -38,22 +38,22 @@ API.interceptors.response.use(
 );
 
 export const registerUser = async (userData) => {
-  const response = await API.post("/users/register", userData);
+  const response = await API.post("/auth/register", userData); //  Fixed
   return response.data;
 };
 
 export const loginUser = async (credentials) => {
-  const response = await API.post("/users/login", credentials);
+  const response = await API.post("/auth/login", credentials); //  Fixed
   return response.data;
 };
 
 export const logoutUser = async () => {
-  const response = await API.post("/users/logout");
+  const response = await API.post("/auth/logout"); //  Fixed
   return response.data;
 };
 
 export const getProfile = async () => {
-  const response = await API.get("/users/profile");
+  const response = await API.get("/auth/profile"); //  Fixed
   return response.data;
 };
 
