@@ -1,8 +1,7 @@
 # 🌐 Live Demo
 
 ### 🚀 Frontend
-
-https://secure-banking-app-zd8b.vercel.app/
+(https://secure-banking-3pu8h2kcz-manishsoni1307s-projects.vercel.app/)
 
 ### ⚙ Backend API
 https://secure-banking-app-2.onrender.com/
