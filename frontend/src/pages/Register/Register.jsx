@@ -69,8 +69,7 @@ function Register() {
 
     try {
       setLoading(true);
-
-      const response = await API.post("/register", {
+      const response = await API.post("/auth/register", {
         name: formData.name,
         email: formData.email,
         password: formData.password,
@@ -78,6 +77,7 @@ function Register() {
 
       toast.success("Registration Successful! 🎉");
       localStorage.setItem("token", response.data.token);
+      localStorage.setItem("user", JSON.stringify(response.data.user));
       navigate("/dashboard");
     } catch (error) {
       toast.error(error.response?.data?.message || "Registration Failed");
