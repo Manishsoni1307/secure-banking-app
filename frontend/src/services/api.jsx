@@ -4,7 +4,7 @@ console.log("API URL =", import.meta.env.VITE_API_URL);
 
 const API = axios.create({
 
-  baseURL: "https://banking-app-backend-h2gp.onrender.com/api", 
+ baseURL: import.meta.env.VITE_API_URL,
   headers: {
     "Content-Type": "application/json",
   },

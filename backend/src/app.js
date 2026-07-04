@@ -8,15 +8,14 @@ const allowedOrigins = [
 
 app.use(
   cors({
-    origin: function (origin, callback) {
-      // allow requests with no origin (like mobile apps or curl)
+    origin(origin, callback) {
       if (!origin) return callback(null, true);
 
       if (allowedOrigins.includes(origin)) {
         return callback(null, true);
       }
 
-      return callback(new Error("Not allowed by CORS: " + origin));
+      return callback(new Error(`Origin ${origin} not allowed by CORS`));
     },
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
@@ -24,5 +23,10 @@ app.use(
   })
 );
 
-// IMPORTANT for preflight
-app.options("*", cors());
+app.options(
+  "*",
+  cors({
+    origin: allowedOrigins,
+    credentials: true,
+  })
+);
