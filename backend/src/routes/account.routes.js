@@ -4,22 +4,21 @@ const accountController = require("../controllers/account.controller");
 
 const router = express.Router();
 
-/**
- * - POST /api/account
- * - Create a new account
- */
 router.post("/", authMiddleware, accountController.createAccountController);
 
-/**
- * - GET /api/account/balance/:accountId
- * - Check account balance 
- */
-router.get("/balance/:accountId", authMiddleware, accountController.getAccountBalanceController);
+// REQUIRED
+router.get("/", authMiddleware, accountController.getMyAccountController);
 
-/**
- * - POST /api/account/deposit
- * - Deposit funds into account
- */
-router.post("/deposit", authMiddleware, accountController.depositFundsController);
+router.get(
+  "/balance/:accountId",
+  authMiddleware,
+  accountController.getAccountBalanceController,
+);
+
+router.post(
+  "/deposit",
+  authMiddleware,
+  accountController.depositFundsController,
+);
 
 module.exports = router;

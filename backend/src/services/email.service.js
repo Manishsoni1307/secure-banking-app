@@ -8,23 +8,16 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// Add this verification block below it to test the connection immediately
 transporter.verify((error, success) => {
   if (error) {
-    console.error("Email server configuration error:", error);
-  } else {
-    console.log("Email server is ready to send messages");
-  }
-});
+    console.error("Email server configuration error:", error.message);
 
-
-// Verify the connection configuration
-transporter.verify((error, success) => {
-  if (error) {
-    console.error(error);
-    console.error(error.response);
+    // Safely log the provider's raw response if available
+    if (error.response) {
+      console.error("📩 SMTP Provider Response:", error.response);
+    }
   } else {
-    console.log("Email server is ready to send messages");
+    console.log("Email server is ready to take our messages");
   }
 });
 
