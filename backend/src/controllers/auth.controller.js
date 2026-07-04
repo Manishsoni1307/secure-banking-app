@@ -2,6 +2,7 @@ const userModels = require("../models/user.model");
 const jwt = require("jsonwebtoken");
 const emailService = require("../services/email.service");
 const tokenBlackListModel = require("../models/blackList.model");
+const accountModel = require("../models/account.model");
 /**
  * -user register controller
  * -POST /api/auth/register
@@ -23,6 +24,12 @@ async function userRegisterController(req, res) {
     email,
     password,
     name,
+  });
+
+  // Automatically create bank account
+  await accountModel.create({
+    user: user._id,
+    balance: 0,
   });
   const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
     expiresIn: "3d",
@@ -47,12 +54,12 @@ async function userRegisterController(req, res) {
  */
 
 async function userLoginController(req, res) {
-const { email, password } = req.body || {};
-if (!email || !password) {
-  return res.status(400).json({
-    message: "Email and password are required",
-  });
-}
+  const { email, password } = req.body || {};
+  if (!email || !password) {
+    return res.status(400).json({
+      message: "Email and password are required",
+    });
+  }
   const user = await userModels.findOne({ email }).select("+password");
   if (!user) {
     return res.status(401).json({
@@ -60,6 +67,16 @@ if (!email || !password) {
     });
   }
   const isValidPassword = await user.comparePassword(password);
+  let account = await accountModel.findOne({
+    user: user._id,
+  });
+
+  if (!account) {
+    account = await accountModel.create({
+      user: user._id,
+      balance: 0,
+    });
+  }
   if (!isValidPassword) {
     return res.status(401).json({
       message: "Email or Password is INVALID",

@@ -43,6 +43,26 @@ async function getAccountBalanceController(req, res) {
       .json({ message: "Server error", error: error.message });
   }
 }
+async function getMyAccountController(req, res) {
+  try {
+    const account = await accountModel.findOne({
+      user: req.user.userId,
+    });
+
+    if (!account) {
+      return res.status(404).json({
+        message: "Account not found",
+      });
+    }
+
+    return res.status(200).json(account);
+  } catch (error) {
+    return res.status(500).json({
+      message: "Server Error",
+      error: error.message,
+    });
+  }
+}
 
 // Paste this function at the bottom of the file
 async function depositFundsController(req, res) {
@@ -80,4 +100,5 @@ module.exports = {
   createAccountController,
   getAccountBalanceController,
   depositFundsController,
+  getMyAccountController,
 };
