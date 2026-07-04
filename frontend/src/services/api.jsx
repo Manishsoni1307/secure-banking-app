@@ -3,13 +3,14 @@ import axios from "axios";
 console.log("API URL =", import.meta.env.VITE_API_URL);
 
 const API = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL:
+    import.meta.env.VITE_API_URL ||
+    "https://secure-banking-app-2.onrender.com/api",
   headers: {
     "Content-Type": "application/json",
   },
   withCredentials: true,
 });
-
 
 API.interceptors.request.use(
   (config) => {
