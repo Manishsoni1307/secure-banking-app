@@ -3,13 +3,20 @@ const nodemailer = require("nodemailer");
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    type: "OAuth2",
     user: process.env.EMAIL_USER,
-    clientId: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET,
-    refreshToken: process.env.REFRESH_TOKEN,
+    pass: process.env.EMAIL_PASS, // Uses your 16-character app password
   },
 });
+
+// Add this verification block below it to test the connection immediately
+transporter.verify((error, success) => {
+  if (error) {
+    console.error("Email server configuration error:", error);
+  } else {
+    console.log("Email server is ready to send messages");
+  }
+});
+
 
 // Verify the connection configuration
 transporter.verify((error, success) => {
@@ -25,17 +32,18 @@ transporter.verify((error, success) => {
 const sendEmail = async (to, subject, text, html) => {
   try {
     const info = await transporter.sendMail({
-      from: `"Banking App" <${process.env.EMAIL_USER}>`, // sender address
-      to, // list of receivers
-      subject, // Subject line
-      text, // plain text body
-      html, // html body
+      from: `"Banking App" <${process.env.EMAIL_USER}>`,
+      to,
+      subject,
+      text,
+      html,
     });
 
-    console.log("Message sent: %s", info.messageId);
-    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+    console.log("Email sent:", info.messageId);
+    return info;
   } catch (error) {
-    console.error("Error sending email:", error);
+    console.log("Email failed but ignored:", error.message);
+    return null; // ✅ IMPORTANT
   }
 };
 

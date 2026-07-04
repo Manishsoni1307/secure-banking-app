@@ -70,11 +70,11 @@ function Register() {
     try {
       setLoading(true);
 
-   const response = await API.post("/users/register", {
-  name: formData.name,
-  email: formData.email,
-  password: formData.password,
-});
+      const response = await API.post("/register", {
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+      });
 
       toast.success("Registration Successful! 🎉");
       localStorage.setItem("token", response.data.token);

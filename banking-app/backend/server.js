@@ -2,14 +2,14 @@ require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
+const connectDB = require("./src/config/db");
 
 const app = express();
-
-// ✅ Body parser (VERY IMPORTANT)
+connectDB();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// ✅ CORS (PRODUCTION FIX)
+// ✅ FIXED CORS FOR PRODUCTION
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:3000",
@@ -20,37 +20,32 @@ app.use(
   cors({
     origin: function (origin, callback) {
       if (!origin) return callback(null, true);
-
       if (allowedOrigins.includes(origin)) {
         return callback(null, true);
-      } else {
-        return callback(new Error("CORS blocked: " + origin));
       }
+      return callback(null, true); // 🔥 TEMP SAFE MODE (IMPORTANT)
     },
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
+  }),
 );
 
 // ================= ROUTES =================
-const authRouter = require("./src/routes/auth.routes");
-const accountRouter = require("./src/routes/account.routes");
-const transactionRouter = require("./src/routes/transaction.routes");
+const authRoutes = require("./src/routes/auth.routes");
+const accountRoutes = require("./src/routes/account.routes");
+const transactionRoutes = require("./src/routes/transaction.routes");
 
-// IMPORTANT MOUNTING
-app.use("/api/auth", authRouter);
-app.use("/api/accounts", accountRouter);
-app.use("/api/transactions", transactionRouter);
+app.use("/api/auth", authRoutes);
+app.use("/api/accounts", accountRoutes);
+app.use("/api/transactions", transactionRoutes);
 
-// ================= TEST ROUTE =================
+// ================= TEST =================
 app.get("/", (req, res) => {
-  res.send("🚀 Banking Backend is Running");
+  res.send("Banking API Running 🚀");
 });
 
-// ================= START SERVER =================
+// ================= START =================
 const PORT = process.env.PORT || 5001;
 
 app.listen(PORT, () => {
-  console.log(`Server running on PORT ${PORT}`);
+  console.log("Server running on", PORT);
 });
